@@ -1,0 +1,21 @@
+line-length = 100
+target-version = "py310"
+src = ["src", "tests"]
+
+[lint]
+select = [
+    "E",   # pycodestyle errors
+    "W",   # pycodestyle warnings
+    "F",   # pyflakes
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "SIM", # flake8-simplify
+    "C4",  # flake8-comprehensions
+]
+ignore = [
+    "E501",  # long lines in prompts/docstrings are acceptable
+]
+
+[lint.per-file-ignores]
+"tests/*" = ["E402"]  # sys.path manipulation before imports is intentional

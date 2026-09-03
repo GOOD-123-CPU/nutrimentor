@@ -1,0 +1,74 @@
+{# NutriMentor landing page — persona picker #}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NutriMentor · AI 营养教学导师平台</title>
+  <style>
+    :root{ --bg:#0f1115; --panel:#171a21; --line:#2a2f3a; --ink:#e8eaf0; --muted:#9aa3b2; }
+    *{box-sizing:border-box; margin:0}
+    body{
+      font-family:"Inter","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+      background:radial-gradient(1200px 600px at 70% -10%, #1a2340 0%, var(--bg) 55%);
+      color:var(--ink); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px;
+    }
+    .wrap{ width:min(1020px,100%) }
+    header{ text-align:center; margin-bottom:34px }
+    .badge{ display:inline-block; padding:5px 14px; border:1px solid var(--line); border-radius:999px;
+            font-size:12px; color:var(--muted); margin-bottom:16px; letter-spacing:.5px }
+    h1{ font-size:34px; font-weight:800; letter-spacing:-.5px }
+    h1 em{ font-style:normal; background:linear-gradient(90deg,#4f8cff,#7c5cff,#3ecf8e);
+           -webkit-background-clip:text; background-clip:text; color:transparent }
+    header p{ color:var(--muted); margin-top:10px; font-size:15px }
+    .grid{ display:grid; gap:16px; grid-template-columns:repeat(3,1fr) }
+    @media(max-width:820px){ .grid{grid-template-columns:1fr} }
+    .card{
+      background:var(--panel); border:1px solid var(--line); border-radius:18px; padding:26px 22px;
+      transition:transform .18s, border-color .18s; cursor:pointer; display:block; text-decoration:none; color:var(--ink);
+    }
+    .card:hover{ transform:translateY(-4px) }
+    .card.student:hover{ border-color:#ff8c42 }
+    .card.teacher:hover{ border-color:#4f8cff }
+    .card.researcher:hover{ border-color:#3ecf8e }
+    .icon{ font-size:30px; margin-bottom:14px }
+    .card h2{ font-size:18px; margin-bottom:6px }
+    .card p{ color:var(--muted); font-size:13.5px; line-height:1.65 }
+    .go{ display:inline-block; margin-top:16px; font-size:13px; font-weight:700 }
+    .card.student .go{ color:#ff8c42 } .card.teacher .go{ color:#4f8cff } .card.researcher .go{ color:#3ecf8e }
+    footer{ text-align:center; margin-top:30px; color:var(--muted); font-size:12px }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="badge">OPEN SOURCE · MIT LICENSE</div>
+      <h1>Nutri<em>Mentor</em></h1>
+      <p>AI 营养教学导师平台 —— 同一份知识库，三种教学人格 · 混合检索 · 引用可溯</p>
+    </header>
+
+    <div class="grid">
+      <a class="card student" href="/student/">
+        <div class="icon">🧒</div>
+        <h2>学生版</h2>
+        <p>儿童科普风格：生动比喻、趣味表情、可操作小任务，让小学生也能听懂营养学。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="card teacher" href="/teacher/">
+        <div class="icon">🎓</div>
+        <h2>教师版</h2>
+        <p>学术严谨风格：研究发现 → 作用机制 → 膳食建议 → 教学要点，四段式备课支持。</p>
+        <span class="go">进入 →</span>
+      </a>
+      <a class="card researcher" href="/researcher/">
+        <div class="icon">🔬</div>
+        <h2>科研版</h2>
+        <p>文献综述风格：证据摘要、方法学评述、证据强度分级与开放问题，面向科研场景。</p>
+        <span class="go">进入 →</span>
+      </a>
+    </div>
+
+    <footer>Powered by hybrid RAG (BGE dense + BM25 + RRF fusion) · 流式输出 · 多轮会话</footer>
+  </div>
+</body>
+</html>

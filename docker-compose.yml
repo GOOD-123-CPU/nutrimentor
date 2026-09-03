@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - ./data/raw:/app/data/raw          # your knowledge base
+      - ./vector_store:/app/vector_store  # FAISS index
+      - ./models/bge-large-zh:/app/models/bge-large-zh  # embedding model
+    restart: unless-stopped

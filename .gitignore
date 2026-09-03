@@ -1,0 +1,43 @@
+# ===== Secrets & environment =====
+.env
+.env.*
+!.env.example
+*.key
+credentials*.json
+
+# ===== Project data (users bring their own corpus) =====
+data/raw/*
+!data/raw/.gitkeep
+vector_store/
+models/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+
+# ===== Models & vector stores =====
+*.faiss
+*.pkl
+*.safetensors
+*.bin
+
+# ===== IDE / OS noise =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+__MACOSX/
+.ipynb_checkpoints/
+*.log
+
+# ===== Local export bundles =====
+_open_source/

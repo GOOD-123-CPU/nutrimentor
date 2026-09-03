@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "nutrimentor"
+version = "1.0.0"
+description = "AI-powered nutrition education platform: hybrid RAG with persona-aware tutoring (student / teacher / researcher)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "NutriMentor Contributors" }]
+keywords = ["rag", "nutrition", "education", "llm", "faiss", "bge"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Education",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Education",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "langchain>=0.2.0,<0.4",
+    "langchain-community>=0.2.0,<0.4",
+    "langchain-openai>=0.1.0,<0.4",
+    "langchain-core>=0.2.0,<0.4",
+    "faiss-cpu>=1.7.4",
+    "rank-bm25>=0.2.2",
+    "jieba>=0.42",
+    "sentence-transformers>=2.2.2",
+    "openai>=1.30.0",
+    "flask>=3.0",
+    "pandas>=2.0",
+    "python-docx>=1.1",
+    "openpyxl>=3.1",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.0",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-cov", "ruff"]
+pubmed = ["requests>=2.31"]
+docker = ["gunicorn>=21.0"]
+
+[project.scripts]
+nutrimentor = "nutrimentor.cli.main:main"
+
+[project.urls]
+Homepage = "https://github.com/GOOD-123-CPU/nutrimentor"
+Issues = "https://github.com/GOOD-123-CPU/nutrimentor/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+nutrimentor = ["assets/**/*", "servers/templates/*.html"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
