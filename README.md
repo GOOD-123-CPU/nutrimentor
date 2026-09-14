@@ -6,12 +6,12 @@
 
 *One knowledge base. Three ways of teaching.*
 
-[![CI](https://img.shields.io/badge/CI-passing-brightgreen)](.github/workflows/ci.yml)
+[![CI](https://github.com/GOOD-123-CPU/nutrimentor/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/GOOD-123-CPU/nutrimentor/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/Python-3.10%2B-3776AB)](pyproject.toml)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4)](CONTRIBUTING.md)
 [![Code style: ruff](https://img.shields.io/badge/Code%20style-ruff-261230)](ruff.toml)
-[![Tests](https://img.shields.io/badge/Tests-22%20passing-success)](tests/)
+[测试源码](tests/test_unit.py)
 
 *Hybrid RAG · Persona Tutoring · Streaming · Citation-grounded · Anti-hallucination gate*
 
@@ -42,12 +42,16 @@ NutriMentor 用一套工程化的 RAG 管线解决：
 - 🌊 **流式输出** — SSE 逐 token 推送，来源先行
 - 💬 **会话记忆** — SQLite 持久化（WAL），重启不丢、线程安全、自动过期清理
 - 🛡️ **反幻觉闸门** — 语料未覆盖即明确拒答，教育产品不赌运气
-- 📊 **离线评估** — `nutrimentor evaluate` 输出 Recall@K / MRR，改检索有据可依
+- 📊 **离线评估** — `nutrimentor evaluate` 输出查询命中比例与倒数排名；评估口径见下方说明
 - 🩺 **环境诊断** — `nutrimentor doctor` 一键体检，issue 排障神器
 - 🔑 **零密钥仓库** — 凭据全走 `.env`，pre-commit + CI 双重密钥扫描
 - 🐳 **一键部署** — Dockerfile（非 root + healthcheck）+ compose + PyPI 发布流水线
 
 ## 🚀 快速开始
+
+### 评估口径
+
+当前 [评估脚本](src/nutrimentor/evaluation.py) 中的 `recall@K` 字段统计“前 K 项至少出现一次相关命中”的查询比例，实际对应 Hit Rate@K。相关性由标题和正文包含标注词判断，`mrr` 使用相同命中规则。它不是以全部相关文档为分母的文档召回率，也不验证生成回答的正确性。内置样例规模较小，比较检索方案时应使用固定、独立标注的评估集。
 
 ### pip 安装（推荐）
 
